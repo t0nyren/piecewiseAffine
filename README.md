@@ -15,7 +15,8 @@
   大部分变形类的图片处理都是通过仿射变换实现的。一个经典的用法就是可以通过改变五官的大小和形状达到美容的效果。
   ![drawing](doc/cosmetic.jpg)
 其实在现实中还有很多例子，比如替换广告牌上的内容（仿射可以将标准的广告牌变成带有透视形变的效果）等等。
-</br>
+
+
 ###**人脸变形简介**
 简单来说，Affine transformation做的事情就是就是将一个图形映射到另一个位置，在映射过程中图形本身的大小，形状可能发生变化，但仍然保留着图形内部点与点之间的位置关系。如下图所示，正方形ABCD通过变换成为梯形ABCD，而内部的两点x,y之间的相对位置并没有发生改变。
 ![drawing](doc/affine.png)
@@ -25,7 +26,8 @@
 3. **Affine transformation**: 对这些三角形进行仿射变换，投影到新的位置。
  * *Face morphing, 3D矫正*：将参考人脸(reference)以及需要变换的目标人脸(target)都进行triangulation，将目标人脸上的三角形与参考人脸上的三角形的大小与位置一一对应，再一个一个通过仿射变换映射过去。
  * *平均脸*： 和矫正相似，首先对所有照片上的人脸标定，然后求出每个landmark的平均位置，再对这些平均位置做triangulation得到参考脸(reference)。最后将所有照片进行triangulation，全部统一映射到参考脸上三角形的位置。
-</br>
+
+
 ###Step 1：Landmark detection
 我对Landmark detection的技巧还没有深入研究，最传统的做法是基于Active Appearance Model (AAM)或是Active Shape Model(ASM)的。现在对landmark detection作的比较好的几个机构有：
 **Face++**
@@ -41,7 +43,7 @@ Delaunay Triangulation是一种最常见的利用参考点(reference point)将�
 DT的一个重要特性是，它最大化了所有三角形中最小的角度(maximized the minimum angles in all triangles)，因此在使用DT得到的三角形做仿射变换可以防止过大的角度变化而造成的失真。
 计算DT的算法：DT并不是一个NP-hard的问题，有许多高效的算法可以解DT，其中最著名的是Lee and Schachter's algorithm，达到了O(nlogn)的time complexity。值得一提的是，由于DT是Voronoi Diagram的dual graph，所以著名的Fortune's algorithm也可以用来求解DT。
 ![drawing](doc/dt.jpg)
-</br>
+
 ###Step 3：Affine Transformation
 Affine Transformation的formal definition如下：
 An affine map [math tex]f:A\rightarrow B [/math] between two affine spaces is a map on the points that acts linearly on the vectors (that is, the vectors between points of the space). In symbols, f determines a linear transformation φ such that, for any pair of points [math tex]P, Q \in A: [/math]
@@ -72,8 +74,9 @@ An affine map [math tex]f:A\rightarrow B [/math] between two affine spaces is a 
      \end{bmatrix}
 [/math]
 其中共有六个变量，使用三角形的三个顶点变换得到的六条线形方程求出A和b后，便可对三角形内的所有点进行变换。
-</br>
-</br>
+
+
+
 ###**代码**
 </br>
 ####基于OpenCV的Delaunay Triangulation [ [C++](https://github.com/t0nyren/DelaunayTriangulation) ]
