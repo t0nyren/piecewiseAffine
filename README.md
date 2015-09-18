@@ -30,9 +30,11 @@
 
 ###Step 1：Landmark detection
 我对Landmark detection的技巧还没有深入研究，最传统的做法是基于Active Appearance Model (AAM)或是Active Shape Model(ASM)的。现在对landmark detection作的比较好的几个机构有：
+
 **Face++**
 * paper: *Extensive Facial Landmark Localization with Coarse-to-fine Convolutional Network Cascade* [ [pdf](doc/faceppICCV.pdf) ] [ [ppt](doc/facepp_iccv_ppt.ppt) ]
 * software: [ [matlab](https://github.com/t0nyren/landmarkpp) ]
+
 **CMU Human Sensing Lab: Intraface**
 * paper: *Supervised Descent Method and its Applications to Face Alignment* [ [pdf](doc/sdm.pdf) ]
 * software: [ [matlab](http://www.humansensing.cs.cmu.edu/intraface/download_functions_matlab.html) ] [ [C++](http://www.humansensing.cs.cmu.edu/intraface/download_functions_cpp.html) ]
