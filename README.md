@@ -36,7 +36,8 @@
 **CMU Human Sensing Lab: Intraface**
 * paper: *Supervised Descent Method and its Applications to Face Alignment* [ [pdf](doc/sdm.pdf) ]
 * software: [ [matlab](http://www.humansensing.cs.cmu.edu/intraface/download_functions_matlab.html) ] [ [C++](http://www.humansensing.cs.cmu.edu/intraface/download_functions_cpp.html) ]
-</br>
+
+
 ###Step 2：Delaunay Triangulation
 Delaunay Triangulation是一种最常见的利用参考点(reference point)将平面分割成三角形的方法。Delaunay Triangulation的标准定义如下：
 *"A Delaunay triangulation for a set P of points in a plane is a triangulation DT(P) such that no point in P is inside the circumcircle of any triangle in DT(P). "*
@@ -45,42 +46,17 @@ DT的一个重要特性是，它最大化了所有三角形中最小的角度(ma
 ![drawing](doc/dt.jpg)
 
 ###Step 3：Affine Transformation
-Affine Transformation的formal definition如下：
-An affine map [math tex]f:A\rightarrow B [/math] between two affine spaces is a map on the points that acts linearly on the vectors (that is, the vectors between points of the space). In symbols, f determines a linear transformation φ such that, for any pair of points [math tex]P, Q \in A: [/math]
-[math tex]\stackrel{\rightarrow}{f(P) f(Q)} = \phi(Q-P)[/math]
-那么如何计算每一个三角形的piecewise Affine Transformation呢？ 其实并不复杂，如果将映射当作linear transformation来看，那么其实是
-[math tex]\stackrel{\rightarrow}{y} = A\stackrel{\rightarrow}{x} + \stackrel{\rightarrow}{b}[/math].
-由于x,y,b均为二维向量，上式可展开为：
-[math tex]
-\begin{bmatrix}
-      y_{0}   \\[0.3em]
-      y_{1}   \\[0.3em]
-     \end{bmatrix}
-= \begin{bmatrix}
-      a_{00}  & a_{01}   \\[0.3em]
-      a_{10}  & a_{11}   \\[0.3em]
-     \end{bmatrix}
-\begin{bmatrix}
-      x_{0}   \\[0.3em]
-      x_{1}   \\[0.3em]
-     \end{bmatrix}
-+ \begin{bmatrix}
-      b_{0}   \\[0.3em]
-      b_{1}   \\[0.3em]
-     \end{bmatrix}
-  = \begin{bmatrix}
-      a_{00}x_{0} + a_{01}x_{1} + b_{0}   \\[0.3em]
-      a_{10}x_{0} + a_{11}x_{1} + b_{1}   \\[0.3em]
-     \end{bmatrix}
-[/math]
-其中共有六个变量，使用三角形的三个顶点变换得到的六条线形方程求出A和b后，便可对三角形内的所有点进行变换。
+![math](doc/math.tiff)
 
 
 
 ###**代码**
-</br>
+
+
 ####基于OpenCV的Delaunay Triangulation [ [C++](https://github.com/t0nyren/DelaunayTriangulation) ]
-</br>
+
+
 ####3D Alignment [ [C++](https://github.com/t0nyren/piecewiseAffine) ]
-</br>
+
+
 ####平均脸：[ [matlab](https://github.com/t0nyren/AverageFace) ]
