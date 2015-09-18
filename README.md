@@ -1,18 +1,25 @@
 ###**Background**
 严格来说，无论是仿射变化(affine transformation)还是图像变形(image warping)其实都不能算在计算机视觉(computer vision)的范畴内，而应该属于计算几何(computational geometry)。自己学习计算几何已经是研究生时候的事情，课程更偏向于对诸如Convex hull, Delaunay triangulation, Voronoi diagram等问题的formulation, algorithm design和complexity analysis，几乎没有涉及任何实际的应用场景。最近研究了Brown University的Computational Photography课程，才发现利用简单的geometry便可以做出各种有意思的图像应用，比如在人脸方面：
+
 * **Face morphing**
-  
   Face morphing翻译过来叫做脸部变形，其实大部分的变形都是指从一个人的脸渐渐变形成另一个人的脸，具体效果如下图。Morphing技术在CG工业界的运用很广泛，比如迪士尼就大量使用morphing来制造廉价的3D造型。
+
   ![drawing](doc/face_morphing.gif)
   (Image from ebnelson's project page, Brown University)
+
 * **3D Face alignment**
   人脸矫正(face alignment)是指把脸调整到标准的大小，位置和姿态，是人脸识别过程中的第一步，也是最关键的一步。人的面部姿态一般会从roll(平面旋转), pitch(左右侧脸)和yaw(抬头低头)三个维度来描述。平面旋转很容易处理，只需将图片旋转一个角度调整至水平即可。而侧脸和低头处理起来比较有挑战，但通过放射变化也可以较好的解决。
+
   ![drawing](doc/alignment.jpg)
+
 * **Average face**
   平均脸是指将许多人脸照片叠在一起，得到一张平均长相的照片。可以用同一个人的多张照片求得此人的标准照，也可以将多个人的照片混合在一起，得到平均的长相。如果使用普通的像素叠加，由于五官无法对齐，图片会变得模糊，而通过仿射将脸调整至标准后，效果便好得多。
+
   ![drawing](doc/avgface.jpg)
+
 * **美容应用**
   大部分变形类的图片处理都是通过仿射变换实现的。一个经典的用法就是可以通过改变五官的大小和形状达到美容的效果。
+
   ![drawing](doc/cosmetic.jpg)
 其实在现实中还有很多例子，比如替换广告牌上的内容（仿射可以将标准的广告牌变成带有透视形变的效果）等等。
 
