@@ -55,7 +55,7 @@ DT的一个重要特性是，它最大化了所有三角形中最小的角度(ma
 ![drawing](doc/dt.jpg)
 
 ###Step 3：Affine Transformation
-![math](doc/math.tiff)
+![math](doc/math.jpg)
 
 
 
